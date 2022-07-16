@@ -1,3 +1,10 @@
+"""
+.. module:: urls
+    :synopsis: Contiene todos los mapeos de urls de la app accounts.
+
+.. moduleauthor:: Roberto Benéitez Vaquero
+"""
+
 from django.urls import path
 from django.contrib.auth import views as auth_views
 

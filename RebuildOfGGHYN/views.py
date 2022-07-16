@@ -4,10 +4,11 @@ from datetime import datetime, timedelta
 from typing import Dict, Any
 
 
+# sin uso actual, antes era el html de bienvenida
 class TestPage(TemplateView):
     template_name = 'test.html'
 
-
+# sin uso actual, antes era el html de desdepedida
 class ThanksPage(TemplateView):
     template_name = 'thanks.html'
 
