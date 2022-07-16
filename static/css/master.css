@@ -1,0 +1,22 @@
+/* CSS MASTER FILE */
+
+body {
+    background-color: azure;
+}
+
+
+/* footer */
+.pre_footer {
+	background-color: #4e555b;
+}
+
+.colFooter {
+	text-align: center;
+	color: white;
+	padding: 10px;
+}
+
+.rFooter {
+	background-color: #343a40;
+
+}

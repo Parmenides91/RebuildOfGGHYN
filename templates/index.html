@@ -1,22 +1,47 @@
-{% extends "base.html" %}
+{% extends "base_principal.html" %}
 
-<div class="container">
+{% block title %}Rebuild of TFG - Index{% endblock %}
 
-  <!-- Presentación -->
-  <section class="contenedor-main row my-5">
-    <main class="col-md-8">
-      <h1 class="display-5 font-italic">Optimización de la factura de la luz mediante la lectura de los Smart Meters</h1>
-      <p class="lead my-3">Parrafada.</p>
+{#{% block barra_menu %} {% endblock %} #}
 
-      <p><a href="#" class="text-success">Saber más...</a></p>
-    </main>
-    <aside class="col-md-4 align-self-center text-right">
-      <h3>Tutores:</h3>
-      <p>Fernando de la Prieta</p>
-      <p>Javierto Prieto</p>
+{% block content_entrada %}
 
-      <h4 class="mt-5">Alumno:</h4>
-      <p>Roberto Benéitez Vaquero</p>
-    </aside>
-  </section>
-</div>
+
+    {#    Presentación#}
+    <div class="container ">
+        <section class="contenedor-main row my-5">
+            <main class="col-md-8">
+                <h1 class="display-5 font-italic">Optimización de la factura de la luz mediante la lectura de los Smart
+                    Meters</h1>
+                <p class="lead my-3">Calcula tus futuros consumos eléctricos a partir de los históricos de consumo.</p>
+                <p>Regístrate, sube un consumo eléctrico y conoce la predicción de consumo. Adapta tu uso energético en
+                    función de tu predicción y el coste.</p>
+                <p class="lead my-3">Funcionamiento básico:</p>
+                <ul>
+                    <li><p>Visualización de consumos energéticos.</p></li>
+                    <li><p>Creacicón atuomática de modelos predictivos de consumos energéticos.</p></li>
+                    <li><p>Creación de predicciones de consumos energéticos a 7 días vista.</p></li>
+                    <li><p>Creación automática de modelos predictos de precios del Mercado Eléctrico.</p></li>
+                    <li><p>Creación de predicciones de precios del Mercado Eléctrico a 7 días vista.</p></li>
+                    <li><p>Cálculo de gasto económico sobre predicción en base a tarifas eléctricas de algunas
+                        distribuidoras.</p></li>
+                </ul>
+                <p>Si quieres conocer cómo está montado el funcionamiento de la aplicación, <a href="#"
+                                                                                               class="text-success">consulta
+                    la guía detallada desde aquí.</a></p>
+            </main>
+            <aside class="col-md-4 align-self-end">
+                <p class="lead my-3">Información adicional:</p>
+                <ul>
+                    <li><p>Precio del Mercado Eléctrico <a href="#" class="text-success">[enlace]</a>.</p></li>
+                    <li><p>Funcionamiento del Mercado Eléctrico <a href="#" class="text-success">[enlace]</a>.</p></li>
+                    <li><p>Tarifas eléctricas de algunas distribuidoras <a href="#" class="text-success">[enlace]</a>.</p></li>
+                </ul>
+                <p>Actualizado a <span class="text-warning font-italic">{{ index_fecha }}</span>.</p>
+            </aside>
+
+        </section>
+    </div>
+
+
+{% endblock %}

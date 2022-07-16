@@ -14,6 +14,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
+MEDIA_DIR = Path.joinpath(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap5',
     'accounts.apps.AccountsConfig',
     'forecasting.apps.ForecastingConfig',
 ]
@@ -108,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Istanbul'
 
 USE_I18N = True
 
@@ -119,6 +122,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
+# MEDIA
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
+
+# LOGIN
+LOGIN_REDIRECT_URL = 'bienvenida'
+LOGOUT_REDIRECT_URL = 'despedida'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
