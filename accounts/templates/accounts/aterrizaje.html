@@ -1,0 +1,24 @@
+{% extends "base_principal.html" %}
+
+{% block content_entrada %}
+    {% if user.is_authenticated %}
+        <p>Sesión iniciada correctamente.</p>
+        <p>Hola, esto es la recepción, <span class="font-italic">{{ user.username }}</span>.</p>
+        <p>Prosigue con lo que sea que estuvieras haciendo.</p>
+
+
+        <p>Si quieres cerrar sesión puedes hacerlo desde aquí:
+            <a href="{% url 'logout' %}"><span class="warning">Log Out</span></a> <span class="small">(mismo enlace y funcionalidad que el log out del desplegable del menú)</span>.
+        </p>
+    {% else %}
+        <p>Sesión cerrada correctamente.</p>
+        <p>Hasta pronto.</p>
+
+        <p>Si quieres iniciar sesión puedes hacerlo desde aquí:
+            <a href="{% url 'login' %}"><span class="warning">Log In</span></a> <span class="small">(mismo enlace y funcionalidad que el log in del desplegable del menú)</span>.
+        </p>
+    {% endif %}
+
+
+
+{% endblock %}

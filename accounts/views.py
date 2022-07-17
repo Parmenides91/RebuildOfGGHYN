@@ -6,24 +6,33 @@
 """
 
 
-from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
 
-from . import forms
+from .forms import CustomUserCreationForm
 
 
-# Create your views here.
+# # Para Iniciar Sesión con el usuario genérico de Django, pero lo estoy sustituyendo por uno custom. Esto quedará obsoleto si lo otro funciona.
+# class SignUp(CreateView):
+#     """
+#     Registro de nuevos usuarios en el sistema.
+#     """
+#
+#     form_class = forms.UserCreateForm
+#     success_url = reverse_lazy("login")
+#     template_name = "accounts/signup.html"
 
-# Para Iniciar Sesión
-class SignUp(CreateView):
+
+class SignUpView(CreateView):
     """
-    Registro de nuevos usuarios en el sistema.
+    Registro de nuevos usuarios en el sistema para nuestro CustomUser.
     """
 
-    form_class = forms.UserCreateForm
+    form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
+
 
 # Mostrar la información de cuenta del usuario
 class PerfilUsuario(TemplateView):

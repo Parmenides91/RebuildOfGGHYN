@@ -20,6 +20,9 @@ class BienvenidaPage(TemplateView):
 class DespedidaPage(TemplateView):
     template_name = 'despedida_usuario.html'
 
+class AterrizajePage(TemplateView):
+    template_name = 'accounts/aterrizaje.html'
+
 
 class HomePage(TemplateView):
     template_name = 'index.html'

@@ -1,11 +1,20 @@
 {% extends "base_principal.html" %}
 
 {% block content_entrada %}
-    <h1 class="display-5 font-italic">Acabas de iniciar sesión. Bienvenido.</h1>
+    {% if user.is_authenticated %}
+        <p>Hola, sea bienvenido, {{ user.username }}.</p>
+        <h1 class="display-5 font-italic">Acabas de iniciar sesión. Bienvenido.</h1>
     <h2>Esta es la página de bienvenida al usuario recién logeado.</h2>
-    <h2>Esta es la página de bienvenida al usuario recién logeado.</h2><h2>Esta es la página de bienvenida al usuario recién logeado.</h2>
     <h2>Esta es la página de bienvenida al usuario recién logeado.</h2>
     <h2>Esta es la página de bienvenida al usuario recién logeado.</h2>
+
+        <h3>Si quieres cerrar sesión puedes hacerlo desde aquí:</h3>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+        <p>También puedes usar el elnace del desplegable del menú de arriba. Llevan al mismo sitio.</p>
+    {% else %}
+        <p>Esta es la página de recepción de quien inicia sesión. Si has llegado hasta aquí y no tienes iniciada sesión, no deberías haber llegado. Así que probablemente haga algo para evitar que llegues hasta aquí.</p>
+    {% endif %}
+
 
 
 {% endblock %}

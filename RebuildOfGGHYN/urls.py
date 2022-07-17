@@ -19,7 +19,7 @@ import django
 
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
+from django.views.generic.base import TemplateView
 
 from . import views
 
@@ -32,14 +32,21 @@ def custom_server_error(request):
 
 urlpatterns = [
     path('', views.HomePage.as_view(), name="home"),
+    # path('', TemplateView.as_view(template_name="home.html"), name="home"),
     path('admin/', admin.site.urls),
+
+    # URLs para App Accounts
+    path("accounts/", include("accounts.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path('accounts/aterrizaje/', views.AterrizajePage.as_view(), name="aterrizaje"),
+
     # path('test/', views.TestPage.as_view(), name="test"),
     # path('thanks/', views.ThanksPage.as_view(), name="thanks"),
     path('bienvenida/', views.BienvenidaPage.as_view(), name="bienvenida"),
     path('despedida/', views.DespedidaPage.as_view(), name="despedida"),
-    path('accounts/', include("accounts.urls", namespace="accounts")),
-    path('accounts/', include("django.contrib.auth.urls")),
-    # path('forecasting/', include("forecasting.urls", namespace="forecasting")),
+    # path('accounts/', include("accounts.urls", namespace="accounts")),
+    # path('accounts/', include("django.contrib.auth.urls")),
+    path('forecasting/', include("forecasting.urls", namespace="forecasting")),
 
     # URLs para errores
     path("404/", custom_page_not_found), # sólo visible si DEBUG = False

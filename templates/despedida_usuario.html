@@ -1,12 +1,27 @@
 {% extends "base_principal.html" %}
 
 {% block content_entrada %}
-    <h1 class="display-5 font-italic">Has cerrado sesión.</h1>
-    <h2>Esta es la página de despedida del usuario que acaba de cerrar sesión.</h2>
-    <h2>Esta es la página de despedida del usuario que acaba de cerrar sesión.</h2>
-    <h2>Esta es la página de despedida del usuario que acaba de cerrar sesión.</h2>
-    <h2>Esta es la página de despedida del usuario que acaba de cerrar sesión.</h2><h2>Esta es la página de despedida del usuario que acaba de cerrar sesión.</h2>
-    <h2>Esta es la página de despedida del usuario que acaba de cerrar sesión.</h2>
+
+    {% if user.is_authenticated %}
+        <p>Esta es la página de quienes han cerrado sesión. Si estás viendo esto es que tienes iniciada sesión pero has llegado hasta aquí. Lo cual no debería haber ocurrido.</p>
+        <p>A lo mejor puedo hacer que la página de aterrizaje del usuario cuando inicia sesión y cuando la cierra sea la misma, con un if de la info a mostrar.</p>
+        <p>Hola, sea bienvenido, {{ user.username }}.</p>
+        <h1 class="display-5 font-italic">Has cerrado sesión.</h1>
+    <h2>Esta es la página de despedida al usuario recién logeado.</h2>
+    <h2>Esta es la página de despedida al usuario recién logeado.</h2>
+    <h2>Esta es la página de despedida al usuario recién logeado.</h2>
+
+        <h3>Si quieres cerrar sesión puedes hacerlo desde aquí:</h3>
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+        <p>También puedes usar el elnace del desplegable del menú de arriba. Llevan al mismo sitio.</p>
+    {% else %}
+        <h3>Acabas de cerrar sesión, hasta pronto.</h3>
+        <h1 class="display-5 font-italic">Has cerrado sesión.</h1>
+    <h2>Esta es la página de despedida al usuario recién logeado.</h2>
+    <h2>Esta es la página de despedida al usuario recién logeado.</h2>
+    <h2>Esta es la página de despedida al usuario recién logeado.</h2>
+    {% endif %}
+
 
 {% endblock %}
 

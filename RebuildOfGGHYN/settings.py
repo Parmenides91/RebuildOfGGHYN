@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap5',
-    'accounts.apps.AccountsConfig',
-    'forecasting.apps.ForecastingConfig',
+    'bootstrap5',                           # bootstrap
+    'django.contrib.humanize',              # adding a “human touch” to data
+    'accounts.apps.AccountsConfig',         # mi app de Accounts
+    'forecasting.apps.ForecastingConfig',   # mi app de Forecasting
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,9 @@ ROOT_URLCONF = 'RebuildOfGGHYN.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,11 +134,17 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 
-# LOGIN
-LOGIN_REDIRECT_URL = 'bienvenida'
-LOGOUT_REDIRECT_URL = 'despedida'
+# LOGIN y LOGOUT
+# LOGIN_REDIRECT_URL = 'bienvenida'
+# LOGOUT_REDIRECT_URL = 'despedida'
+LOGIN_REDIRECT_URL = 'aterrizaje'
+LOGOUT_REDIRECT_URL = 'aterrizaje'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Modelo de usuario - el que he creado yo en Models.py
+AUTH_USER_MODEL = "accounts.CustomUser"
