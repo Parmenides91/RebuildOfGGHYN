@@ -17,7 +17,7 @@ from . import forms
 from .forms import InmuebleForm
 from django.conf import settings
 
-from accounts.models import CustomUser
+from accounts.models import User
 
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
@@ -92,8 +92,8 @@ class UserInmuebles(ListView):
 
     def get_queryset(self):
         try:
-            self.inmueble_user=CustomUser.objects.get(username__iexact=self.kwargs.get("username"))
-        except CustomUser.DoesNotExist:
+            self.inmueble_user=User.objects.get(username__iexact=self.kwargs.get("username"))
+        except User.DoesNotExist:
             raise Http404
         else:
             return self.inmueble_user.inmuebles.all()

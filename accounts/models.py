@@ -13,7 +13,7 @@ from django.utils import timezone
 
 
 # Create your models here.
-class CustomUser(AbstractUser):
+class User(AbstractUser):
     """
     Clase para CustomUser. Será el Usuario que se use en la plataforma.
     """
