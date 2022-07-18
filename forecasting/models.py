@@ -19,7 +19,8 @@ class Inmueble(models.Model):
     Clase para Inmueble. Recoge la información principal de la vivienda de un usuario.
     """
 
-    propietario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='inmuebles')
+    propietario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='inmuebles', default=1)
+    # propietario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='inmuebles', null=True)
     # propietario = models.ForeignKey(CustomUser, related_name='inmuebles', on_delete=models.CASCADE(collector=None, field=0, sub_objs=0, using=0))
     # propietario = models.ForeignKey(User, related_name="inmuebles", on_delete=models.CASCADE)
     nombre = models.CharField(max_length=30, unique=True)

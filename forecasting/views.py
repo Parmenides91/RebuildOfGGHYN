@@ -32,11 +32,12 @@ class CreateInmueble(LoginRequiredMixin, SelectRelatedMixin, CreateView):
     model = models.Inmueble
     fields = ('nombre', 'descripcion')
 
-    # def form_valid(self, form):
-    #     self.object = form.save(commit = False)
-    #     self.object.user = self.request.user
-    #     self.object.save()
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        self.object = form.save(commit = False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
 
 
 # Modificar un inmueble existente
@@ -72,11 +73,13 @@ class InmuebleDetail(SelectRelatedMixin, DetailView):
     """
 
     model = models.Inmueble
-    select_related = ("user",)
+    # select_related = ("user",)
+    select_related = ("propietario",)
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(user__username__iexact = self.kwargs.get("username"))
+        # return queryset.filter(user__username__iexact = self.kwargs.get("username"))
+        return queryset.filter(propietario__username__iexact=self.kwargs.get("username"))
 
 # Listado de Inmuebles para un usuario
 class UserInmuebles(ListView):
