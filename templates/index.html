@@ -1,5 +1,7 @@
 {% extends "base_principal.html" %}
 
+{% load humanize %}             {# paquete para humanizar los datos #}
+
 {% block title %}Rebuild of TFG - Index{% endblock %}
 
 {#{% block barra_menu %} {% endblock %} #}
@@ -37,7 +39,7 @@
                     <li><p>Funcionamiento del Mercado Eléctrico <a href="#" class="text-success">[enlace]</a>.</p></li>
                     <li><p>Tarifas eléctricas de algunas distribuidoras <a href="#" class="text-success">[enlace]</a>.</p></li>
                 </ul>
-                <p>Actualizado a <span class="text-warning font-italic">{{ index_fecha }}</span>.</p>
+                <p>Actualizado a <span class="text-warning font-italic">{{ index_fecha|naturalday }} <small>({{ index_fecha }})</small></span>.</p>
             </aside>
 
         </section>

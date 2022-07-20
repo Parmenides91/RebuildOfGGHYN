@@ -32,11 +32,35 @@ class CreateInmueble(LoginRequiredMixin, SelectRelatedMixin, CreateView):
     model = models.Inmueble
     fields = ('nombre', 'descripcion')
 
+    # def form_valid(self, form):
+    #     self.object = form.save(commit = False)
+    #     self.object.user = self.request.user
+    #     self.object.save()
+    #     return super().form_valid(form)
+
     def form_valid(self, form):
-        self.object = form.save(commit = False)
-        self.object.user = self.request.user
+        self.post = form.save(commit=False)
+        self.propietario = form.propietario
         self.object.save()
         return super().form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = request.user
+            obj.propietario = request.user
+            obj.save()
+            return super().form_valid(form)
+            # return super(CreateInmueble, self).form_valid(form)
+        else:
+            pass
+
+        # return render(request, 'index.html', context_instance=RequestContext(request))
+
+        return render(request, 'index.html')
+
 
 
 

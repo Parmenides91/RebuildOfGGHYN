@@ -61,7 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            BASE_DIR / 'templates', # TODO: creo que esto debería ser Path.joinpath(BASE_DIR, 'templates'). Y poner esta variable arriba como TEMPLATE_DIR, con las demás
         ]
         ,
         'APP_DIRS': True,
@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'RebuildOfGGHYN.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3.gghyn',
+        'NAME': BASE_DIR / 'db.sqlite3.gghyn', # TODO: creo que esto debería ser Path.joinpath(BASE_DIR, 'db.sqlite3.gghyn')
     }
 }
 
