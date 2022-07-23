@@ -1,24 +1,26 @@
 """
 .. module:: models
-    :synopsis: Contiene la clase usuario que se necesita para el sistema. Se ha creado una nueva clase para Usuario, partiendo de AbstracUser (que a su vez parte de AbstractBaseUser pero que ya trae una configuración básica por defecto para hacerlo más sencillo de usar).
+    :synopsis: Contiene la clase UsuarioTFG, dentro de la App Accounts, que son los usuarios básicos del sistema. Se parte de "AbstractUser" (que parte de AbstractBaseUser (complejo)) que es sencilla de usar.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
 """
 
-from django.db import models
 
 from django.contrib.auth.models import AbstractUser
-from django.utils import timezone
+from django.db import models
 
 
-
-# Create your models here.
-class User(AbstractUser):
+class UsuarioTFG(AbstractUser):
     """
-    Clase para CustomUser. Será el Usuario que se use en la plataforma.
+    Clase para UsuarioTFG. Será el Usuario que se use en la plataforma.
     """
-    pass
-    # add additional fields in here
+
+    # username = models.CharField(max_length=30, unique=True)
+    # email = models.EmailField(verbose_name="email", max_length=60, unique=True)
+    # firstName = models.CharField(max_length=30)
+
+    # USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['username', 'email']
 
     def __str__(self):
         return self.username

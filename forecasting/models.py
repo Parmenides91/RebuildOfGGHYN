@@ -1,28 +1,26 @@
 """
 .. module:: models
-    :synopsis: Contiene los modelos necesarios para la app forecasting
+    :synopsis: Contiene los modelos de la App Forecasting. Modelos que contiene: · Inmueble.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
 """
+# TODO: el comentario del listado de los modelos en este fichero para Sphinx debe ir en multilinea.
+
 
 from django.db import models
 from django.urls import reverse
 
-from accounts.models import User
+from accounts.models import UsuarioTFG
 
 
-# Create your models here.
 class Inmueble(models.Model):
     """
     Clase para Inmueble. Recoge la información principal de la vivienda de un usuario.
     """
 
-    propietario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='inmuebles')
-    # propietario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='inmuebles', null=True)
-    # propietario = models.ForeignKey(CustomUser, related_name='inmuebles', on_delete=models.CASCADE(collector=None, field=0, sub_objs=0, using=0))
-    # propietario = models.ForeignKey(User, related_name="inmuebles", on_delete=models.CASCADE)
+    propietario = models.ForeignKey(UsuarioTFG, on_delete=models.CASCADE, related_name='inmuebles')
     nombre = models.CharField(max_length=30, unique=True)
-    descripcion = models.CharField(max_length=255, blank=True)
+    descripcion = models.CharField(max_length=255, blank=True) # TODO: cambiar este campo a un textField
     created_at = models.DateTimeField(auto_now=True)
     modified_at = models.DateTimeField(auto_now=True)
 

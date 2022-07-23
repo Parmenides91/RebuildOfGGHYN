@@ -1,31 +1,28 @@
+"""
+.. module:: views
+    :synopsis: Contiene las vistas generales del proyecto (App RebuildOfGGHYN).
+
+.. moduleauthor:: Roberto Benéitez Vaquero
+"""
+
 from django.views.generic import TemplateView
-
-from datetime import datetime, timedelta
-from typing import Dict, Any
+from datetime import datetime
 
 
-# sin uso actual, antes era el html de bienvenida
-class TestPage(TemplateView):
-    template_name = 'test.html'
-
-# sin uso actual, antes era el html de desdepedida
-class ThanksPage(TemplateView):
-    template_name = 'thanks.html'
-
-
-class BienvenidaPage(TemplateView):
-    template_name = 'bienvenida_usuario.html'
-
-
-class DespedidaPage(TemplateView):
-    template_name = 'despedida_usuario.html'
-
+# TODO: esta vista debe ir en la app de ACCOUNTS, no aquí.
 class AterrizajePage(TemplateView):
+    """
+    Visualización de la página a la que se les redirige a los usuarios al iniciar y cerrar sesión.
+    """
+
     template_name = 'accounts/aterrizaje.html'
-    # TODO: esta vista debe ir en la app de ACCOUNTS, no aquí.
 
 
 class HomePage(TemplateView):
+    """
+    Visualización de la página principal del Proyecto.
+    """
+
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):

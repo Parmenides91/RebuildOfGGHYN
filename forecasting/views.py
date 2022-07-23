@@ -1,6 +1,6 @@
 """
 .. module:: view
-    :synopsis: Contiene todas las vistas de la app forecasting.
+    :synopsis: Contiene las vistas de la App Forecasting.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
 """
@@ -16,17 +16,14 @@ from . import models
 from . import forms
 from .forms import InmuebleForm
 from django.conf import settings
+from django.core.exceptions import ValidationError
 
-from accounts.models import User
-
-# from django.contrib.auth import get_user_model
-# User = get_user_model()
+from accounts.models import UsuarioTFG
 
 
-# Crear un nuevo inmueble
 class CreateInmueble(LoginRequiredMixin, SelectRelatedMixin, CreateView):
     """
-    Creación de un Inmueble
+    Vista para creación de un Inmueble.
     """
 
     model = models.Inmueble
@@ -52,22 +49,35 @@ class CreateInmueble(LoginRequiredMixin, SelectRelatedMixin, CreateView):
             obj.user = request.user
             obj.propietario = request.user
             obj.save()
+            # prints
+            # print('Variable form.is_valid()' + str(form.is_valid()))
+            print('Variable obj.user: ' + str(obj.user))
+            print('Variable obj.propietario: ' + str(obj.propietario))
+            print('Variable obj.propietario: ' + str(obj.nombre))
+            print('Variable obj.propietario: ' + str(obj.descripcion))
             return super().form_valid(form)
             # return super(CreateInmueble, self).form_valid(form)
         else:
+            print('Estoy en el ELSE de la validación del FORM.')
+            print('Valores de datos:')
+            # print('Propietario (desde form.)' +form.propietario)
+            print('Es Válido (desde form.)' + str(form.is_valid))
+            # print('Usuario (desde form.save)' + form.save.user)
+            # print('Propietario (desde form.save)' + form.save.propietario)
+            # print('Propietario (desde form.save)' + self.propietario)
+            raise ValidationError("Algo ha ido mal")
             pass
 
         # return render(request, 'index.html', context_instance=RequestContext(request))
 
-        return render(request, 'index.html')
+        # return render(request, 'index.html')
+        return null
+        return super().form_valid(form)
 
 
-
-
-# Modificar un inmueble existente
 class InmuebleUpdateView(LoginRequiredMixin, UpdateView):
     """
-    Modificación de los datos de un Inmueble.
+    Vista para modificación de los datos de un Inmueble.
     """
 
     model = models.Inmueble
@@ -75,14 +85,10 @@ class InmuebleUpdateView(LoginRequiredMixin, UpdateView):
     template_name_suffix = '_form_update'
 
 
-# Eliminar un inmueble
-# """
-#     Esta vista requiere atención:
-#     - Debería redirigir al listado de los inmuebles que tenga el usuario. Hay que pasarle por argumento el username
-# """
+# TODO: Debería redirigir al listado de los inmuebles que tenga el usuario. Hay que pasarle por argumento el username (o algo).
 class DeleteInmueble(LoginRequiredMixin, DeleteView):
     """
-    Eliminación de un Inmueble
+    Vista para eliminación de un Inmueble.
     """
 
     model = models.Inmueble
@@ -90,10 +96,9 @@ class DeleteInmueble(LoginRequiredMixin, DeleteView):
     #success_url = reverse_lazy('forecasting:create_inmueble', kwargs={"username": self.user.username})
 
 
-#muestra un inmueble individual
 class InmuebleDetail(SelectRelatedMixin, DetailView):
     """
-    Muestra de los datos para un Inmueble en concreto.
+    Vista para mostrar los datos de un Inmueble en concreto.
     """
 
     model = models.Inmueble
@@ -105,10 +110,10 @@ class InmuebleDetail(SelectRelatedMixin, DetailView):
         # return queryset.filter(user__username__iexact = self.kwargs.get("username"))
         return queryset.filter(propietario__username__iexact=self.kwargs.get("username"))
 
-# Listado de Inmuebles para un usuario
+
 class UserInmuebles(ListView):
     """
-    Listado de los Inmuebles para un usuario en concreto.
+    Vista para listar los Inmuebles de un usuario en concreto.
     """
 
     model=models.Inmueble
@@ -116,8 +121,8 @@ class UserInmuebles(ListView):
 
     def get_queryset(self):
         try:
-            self.inmueble_user=User.objects.get(username__iexact=self.kwargs.get("username"))
-        except User.DoesNotExist:
+            self.inmueble_user=UsuarioTFG.objects.get(username__iexact=self.kwargs.get("username"))
+        except UsuarioTFG.DoesNotExist:
             raise Http404
         else:
             return self.inmueble_user.inmuebles.all()

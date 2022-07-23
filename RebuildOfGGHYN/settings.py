@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATE_DIR = Path.joinpath(BASE_DIR, 'templates')
 STATIC_DIR = Path.joinpath(BASE_DIR, 'static')
 MEDIA_DIR = Path.joinpath(BASE_DIR, 'media')
 
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-q(urdatnyc%w_fzkeqvu8doc39g&7fy&!7aihq4nn$f=p1v-ny
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] # Con * esta´s permitiendo todos. No debería ser así, llegado el momento
 
 
 # Application definition
@@ -61,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates', # TODO: creo que esto debería ser Path.joinpath(BASE_DIR, 'templates'). Y poner esta variable arriba como TEMPLATE_DIR, con las demás
+            TEMPLATE_DIR,
         ]
         ,
         'APP_DIRS': True,
@@ -125,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
+STATICFILES_DIRS = [ # TODO: Creo que se puede poner en cada Aplicación una carpeta Static para tener en cada sitio sus propios static, similar que las Tempaltes.
     STATIC_DIR,
 ]
 
@@ -146,5 +147,5 @@ LOGOUT_REDIRECT_URL = 'aterrizaje'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# Modelo de usuario - el que he creado yo en Models.py
-AUTH_USER_MODEL = "accounts.User"
+# Modelo para los usuarios del proyecto - el que he creado yo en "models.py" de la App Accounts.
+AUTH_USER_MODEL = "accounts.UsuarioTFG"

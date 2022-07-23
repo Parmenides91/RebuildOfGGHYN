@@ -4,6 +4,7 @@
 
 {% block content_entrada %}
 
+    {% if user.is_authenticated %}
     <div class="container">
 
         <p class="display-4 my-4">Información del Usuario:</p>
@@ -31,5 +32,14 @@
 {#        </div>#}
 
     </div>
+
+    {% else %}
+        <div class="container">
+            <p class="display-4 my-4">No has iniciado sesión, no puedes ver tus datos de Usuario.</p>
+            <p class="display-4 my-4">Inicia sesión para poder acceder a tus datos.</p>
+            <p class="text-danger">Esto hay que corregirlo, porque realmente un anónimo está escribiendo una url de un usuario que no sabe si existe o no. Directamente este anónimo no debería poder acceder aquí.</p>
+        </div>
+
+    {% endif %}
 
 {% endblock %}

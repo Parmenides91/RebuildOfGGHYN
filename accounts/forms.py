@@ -1,6 +1,6 @@
 """
 .. module:: forms
-    :synopsis: Formulario para los Modelos de la App Accounts.
+    :synopsis: Formularios para los Modelos de la App Accounts.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
 """
@@ -8,37 +8,25 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from .models import User
+from accounts.models import UsuarioTFG
 
-class UserCreationForm(UserCreationForm):
+
+class UsuarioTFGCreationForm(UserCreationForm):
     """
-    Formulario de UserCreationForm para CustomUser.
-    """
-
-    class Meta:
-        model = User
-        fields = ("username", "email")
-
-
-class UserChangeForm(UserChangeForm):
-    """
-    Formulario de UserChangeForm para CustomUser.
+    Formulario de UserCreationForm para UsuarioTFG.
     """
 
     class Meta:
-        model = User
+        model = UsuarioTFG
         fields = ("username", "email")
 
 
+class UsuarioTFGChangeForm(UserChangeForm):
+    """
+    Formulario de UserChangeForm para UsuarioTFG.
+    """
 
+    class Meta:
+        model = UsuarioTFG
+        fields = ("username", "email")
 
-
-# class UserCreateForm(UserCreationForm):
-#     class Meta:
-#         fields = ("username", "email", "password1", "password2")
-#         model = get_user_model()
-#
-#         def __init__(self, *args, **kwargs):
-#             super().__init__(*args, **kwargs)
-#             self.fields["username"].label = "Display name"
-#             self.fields["email"].label = "Email address"

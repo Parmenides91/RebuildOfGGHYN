@@ -1,6 +1,6 @@
 """
 .. module:: admin
-    :synopsis: De nuestra clase de CustomUser la añadimos para que pueda tener usuarios Admin.
+    :synopsis: Se permite que la UsuarioTFG sea gestionable desde ADMINISTRACIÓN de Django y puedan ser administradores.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
 """
@@ -8,20 +8,19 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import UserCreationForm, UserChangeForm
-from .models import User
+from accounts.forms import UsuarioTFGCreationForm, UsuarioTFGChangeForm
+from accounts.models import UsuarioTFG
 
 
-# Register your models here.
-class UserAdmin(UserAdmin):
+class UsuarioTFGAdmin(UserAdmin):
     """
-    Clase para CustomUserAdmin. Que nuestro clase CustomUser pueda ser Admin.
+    Clase para que UsuarioTFG pueda ser administrador (no estoy seguro de qué cojones hace esta clase o si hace algo, la verdad :\ )
     """
 
-    add_form = UserCreationForm
-    form = UserChangeForm
-    model = User
+    add_form = UsuarioTFGCreationForm
+    form = UsuarioTFGChangeForm
+    model = UsuarioTFG
     list_display = ["email", "username"]
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(UsuarioTFG, UsuarioTFGAdmin)

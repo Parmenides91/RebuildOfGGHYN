@@ -1,6 +1,6 @@
 """
 .. module:: views
-    :synopsis: Contiene todas las vistas de la app accounts.
+    :synopsis: Contiene las vistas de la App Accounts.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
 """
@@ -10,34 +10,22 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
-from .forms import UserCreationForm
-
-
-# # Para Iniciar Sesión con el usuario genérico de Django, pero lo estoy sustituyendo por uno custom. Esto quedará obsoleto si lo otro funciona.
-# class SignUp(CreateView):
-#     """
-#     Registro de nuevos usuarios en el sistema.
-#     """
-#
-#     form_class = forms.UserCreateForm
-#     success_url = reverse_lazy("login")
-#     template_name = "accounts/signup.html"
+from accounts.forms import UsuarioTFGCreationForm
 
 
 class SignUpView(CreateView):
     """
-    Registro de nuevos usuarios en el sistema para nuestro CustomUser.
+    Registro de nuevos usuarios en el sistema para nuestro UsuarioTFG.
     """
 
-    form_class = UserCreationForm
+    form_class = UsuarioTFGCreationForm
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
 
 
-# Mostrar la información de cuenta del usuario
 class PerfilUsuario(TemplateView):
     """
-    Muestra de los datos que se poseen en el sistema relativos al usuario.
+    Visualización de los datos principales del UsuarioTFG.
     """
 
     template_name = 'accounts/perfil_usuario.html'
