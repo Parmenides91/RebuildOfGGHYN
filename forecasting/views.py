@@ -110,8 +110,17 @@ class InmuebleDetail(SelectRelatedMixin, DetailView):
         # return queryset.filter(user__username__iexact = self.kwargs.get("username"))
         return queryset.filter(propietario__username__iexact=self.kwargs.get("username"))
 
+    # No sé qué leches hace esto. Tengo que filtrar en la vista la lógica de comprobar si un usuario tiene inmuebles, cuales son y devolverlos.
+    # def get_context_data(self, *args, **kwargs):
+    #     inmuebles_dict = super(InmuebleDetail, self).get_context_data()
+    #     if self.request.user.is_authenticated and inmuebles_dict['object'].propietario == self.request.user:
+    #         return inmuebles_dict
+    #     else:
+    #         inmuebles_dict = {'inmuebles_usuario': 0}
+    #         return inmuebles_dict
 
-class UserInmuebles(ListView):
+
+class UserInmuebles(ListView): # TODO: qué leches de lío hay con las plantillas!?
     """
     Vista para listar los Inmuebles de un usuario en concreto.
     """

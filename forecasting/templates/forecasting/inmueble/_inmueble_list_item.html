@@ -4,6 +4,7 @@
 <li class="card col-sm-3 mx-3 my-3 border-info rounded pt-3">
 {#    <a href="{% url 'forecasting:single_inmueble' username=inmueble.user.username pk=inmueble.pk %}" style="text-decoration:none;">#}
         <a href="{% url 'forecasting:single_inmueble' username=inmueble.propietario.username pk=inmueble.pk %}" style="text-decoration:none;">
+            <p>(fichero "_inmueble_list_item.html")</p>
         <img class=" img-fluid card-img border-white" src="{% static 'img/inmueble001.svg' %}" alt="inmueble icon">
     </a>
     <hr>

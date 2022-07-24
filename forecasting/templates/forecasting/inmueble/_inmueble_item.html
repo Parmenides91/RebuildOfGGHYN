@@ -10,7 +10,7 @@
     {#Segundo Intento#}
     <div class="row mb-4">
         <div class="col-12">
-            <p class="h2">{{ inmueble.nombre }}</p>
+            <p class="h2">{{ inmueble.nombre }} (fichero "_inmueble_item.html")</p>
         </div>
         <div class="col-8">
 
@@ -20,7 +20,8 @@
         <div class="col-2 border-left border-info">
             <p class="text-muted text-right my-0">Creado: <em>{{ inmueble.created_at|naturalday }}</em></p>
             <p class="text-muted text-right my-0">Modificado: <em>{{ inmueble.modified_at|naturalday }}</em></p>
-            <p class="text-muted text-right my-0">Usuario: <em>{{ inmueble.user.username }}</em></p>
+{#            <p class="text-muted text-right my-0">Usuario: <em>{{ inmueble.user.username }}</em></p>#}
+            <p class="text-muted text-right my-0">Usuario: <em>{{ inmueble.propietario.username }}</em></p>
         </div>
         <div class="col-2 align-content-end">
             {% if user.is_authenticated %}
