@@ -1,5 +1,5 @@
 """
-.. module:: views
+..  module:: views
     :synopsis: Contiene las vistas de la App Accounts.
 
 .. moduleauthor:: Roberto Benéitez Vaquero
